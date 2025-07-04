@@ -144,7 +144,7 @@ mod tests {
                 &[
                     Seed::InstructionData {
                         index: 8,
-                        length: 8,
+                        length: 32,
                     }, // amount
                     Seed::AccountKey { index: 2 }, // destination
                     Seed::AccountKey { index: 5 }, // extra meta 1
