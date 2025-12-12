@@ -27,3 +27,6 @@ config = "scripts/spellcheck.toml"
 pre-release-commit-message = "Publish {{crate_name}} v{{version}}"
 tag-message = "Publish {{crate_name}} v{{version}}"
 consolidate-commits = false
+
+[patch.crates-io]
+spl-pod = { path = "../libraries/pod" }

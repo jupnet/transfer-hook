@@ -3,6 +3,7 @@
 
 use {
     crate::{error::TransferHookError, get_extra_account_metas_address, instruction},
+    ethnum::U256,
     solana_account_info::AccountInfo,
     solana_cpi::invoke,
     solana_instruction::{AccountMeta, Instruction},
@@ -19,7 +20,7 @@ pub fn invoke_execute<'a>(
     destination_info: AccountInfo<'a>,
     authority_info: AccountInfo<'a>,
     additional_accounts: &[AccountInfo<'a>],
-    amount: u64,
+    amount: U256,
 ) -> ProgramResult {
     let mut cpi_instruction = instruction::execute(
         program_id,
@@ -72,7 +73,7 @@ pub fn add_extra_accounts_for_execute_cpi<'a>(
     mint_info: AccountInfo<'a>,
     destination_info: AccountInfo<'a>,
     authority_info: AccountInfo<'a>,
-    amount: u64,
+    amount: U256,
     additional_accounts: &[AccountInfo<'a>],
 ) -> ProgramResult {
     let validate_state_pubkey = get_extra_account_metas_address(mint_info.key, program_id);
@@ -188,10 +189,10 @@ mod tests {
         let spl_token_2022_program_id = Pubkey::new_unique(); // Mock
         let transfer_hook_program_id = Pubkey::new_unique();
 
-        let amount = 100u64;
+        let amount = U256::from(100_u64);
 
         let source_pubkey = Pubkey::new_unique();
-        let mut source_data = vec![0; 165]; // Mock
+        let mut source_data = vec![0; 189]; // Mock
         let mut source_lamports = 0; // Mock
         let source_account_info = AccountInfo::new(
             &source_pubkey,
@@ -204,7 +205,7 @@ mod tests {
         );
 
         let mint_pubkey = Pubkey::new_unique();
-        let mut mint_data = vec![0; 165]; // Mock
+        let mut mint_data = vec![0; 189]; // Mock
         let mut mint_lamports = 0; // Mock
         let mint_account_info = AccountInfo::new(
             &mint_pubkey,
@@ -217,7 +218,7 @@ mod tests {
         );
 
         let destination_pubkey = Pubkey::new_unique();
-        let mut destination_data = vec![0; 165]; // Mock
+        let mut destination_data = vec![0; 189]; // Mock
         let mut destination_lamports = 0; // Mock
         let destination_account_info = AccountInfo::new(
             &destination_pubkey,

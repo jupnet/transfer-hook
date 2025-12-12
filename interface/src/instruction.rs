@@ -1,6 +1,7 @@
 //! Instruction types
 
 use {
+    ethnum::U256,
     solana_instruction::{AccountMeta, Instruction},
     solana_program_error::ProgramError,
     solana_pubkey::Pubkey,
@@ -29,7 +30,7 @@ pub enum TransferHookInstruction {
     ///      validation account data
     Execute {
         /// Amount of tokens to transfer
-        amount: u64,
+        amount: U256,
     },
 
     /// Initializes the extra account metas on an account, writing into the
@@ -89,9 +90,9 @@ impl TransferHookInstruction {
         Ok(match discriminator {
             ExecuteInstruction::SPL_DISCRIMINATOR_SLICE => {
                 let amount = rest
-                    .get(..8)
+                    .get(..32)
                     .and_then(|slice| slice.try_into().ok())
-                    .map(u64::from_le_bytes)
+                    .map(U256::from_le_bytes)
                     .ok_or(ProgramError::InvalidInstructionData)?;
                 Self::Execute { amount }
             }
@@ -156,7 +157,7 @@ pub fn execute_with_extra_account_metas(
     authority_pubkey: &Pubkey,
     validate_state_pubkey: &Pubkey,
     additional_accounts: &[AccountMeta],
-    amount: u64,
+    amount: U256,
 ) -> Instruction {
     let mut instruction = execute(
         program_id,
@@ -181,7 +182,7 @@ pub fn execute(
     mint_pubkey: &Pubkey,
     destination_pubkey: &Pubkey,
     authority_pubkey: &Pubkey,
-    amount: u64,
+    amount: U256,
 ) -> Instruction {
     let data = TransferHookInstruction::Execute { amount }.pack();
     let accounts = vec![
@@ -263,7 +264,7 @@ mod test {
 
     #[test]
     fn validate_packing() {
-        let amount = 111_111_111;
+        let amount = U256::from(111_111_111_u64);
         let check = TransferHookInstruction::Execute { amount };
         let packed = check.pack();
         // Please use ExecuteInstruction::SPL_DISCRIMINATOR in your program, the
