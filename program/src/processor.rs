@@ -1,6 +1,7 @@
 //! Program state processor
 
 use {
+    ethnum::U256,
     solana_account_info::{next_account_info, AccountInfo},
     solana_cpi::invoke_signed,
     solana_msg::msg,
@@ -37,7 +38,7 @@ fn check_token_account_is_transferring(account_info: &AccountInfo) -> Result<(),
 pub fn process_execute(
     program_id: &Pubkey,
     accounts: &[AccountInfo],
-    amount: u64,
+    amount: U256,
 ) -> ProgramResult {
     let account_info_iter = &mut accounts.iter();
 

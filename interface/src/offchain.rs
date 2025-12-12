@@ -2,6 +2,7 @@
 
 pub use spl_tlv_account_resolution::state::{AccountDataResult, AccountFetchError};
 use {
+    ethnum::U256,
     crate::{
         error::TransferHookError,
         get_extra_account_metas_address,
@@ -52,7 +53,7 @@ pub async fn add_extra_account_metas_for_execute<F, Fut>(
     mint_pubkey: &Pubkey,
     destination_pubkey: &Pubkey,
     authority_pubkey: &Pubkey,
-    amount: u64,
+    amount: U256,
     fetch_account_data_fn: F,
 ) -> Result<(), AccountFetchError>
 where
@@ -143,7 +144,7 @@ mod tests {
                 &[
                     Seed::InstructionData {
                         index: 8,
-                        length: 8,
+                        length: 32,
                     }, // amount
                     Seed::AccountKey { index: 2 }, // destination
                     Seed::AccountKey { index: 5 }, // extra meta 1
@@ -166,7 +167,7 @@ mod tests {
         let mint = Pubkey::new_unique();
         let destination = Pubkey::new_unique();
         let authority = Pubkey::new_unique();
-        let amount = 100u64;
+        let amount = U256::from(100_u64);
 
         let validate_state_pubkey = get_extra_account_metas_address(&mint, &PROGRAM_ID);
         let extra_meta_3_pubkey = Pubkey::find_program_address(
