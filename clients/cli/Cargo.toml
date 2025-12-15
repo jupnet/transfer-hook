@@ -12,35 +12,38 @@ edition = { workspace = true }
 [dependencies]
 clap = { version = "3", features = ["cargo"] }
 futures-util = "0.3.31"
+
 solana-clap-v3-utils = "3.0.0"
 solana-cli-config = "3.0.0"
 solana-client = "3.0.0"
 solana-commitment-config = "3.0.0"
-solana-instruction = "3.0.0"
+solana-instruction = { git = "https://github.com/jupnet/jupnet-sdk" }
 solana-logger = "3.0.0"
-solana-pubkey = "3.0.0"
+solana-pubkey = { git = "https://github.com/jupnet/jupnet-sdk" }
 solana-remote-wallet = "3.0.0"
-solana-sdk-ids = "3.0.0"
-solana-signature = "3.0.0"
-solana-signer = "3.0.0"
-solana-system-interface = "2"
-solana-transaction = "3.0.0"
+solana-sdk-ids = { git = "https://github.com/jupnet/jupnet-sdk" }
+solana-signer = { git = "https://github.com/jupnet/jupnet-sdk" }
+solana-signature = { git = "https://github.com/jupnet/jupnet-sdk" }
+solana-system-interface = { git = "https://github.com/jupnet/jupnet-sdk" }
+solana-transaction = { git = "https://github.com/jupnet/jupnet-sdk" }
+
 spl-tlv-account-resolution = { version = "0.11.0", features = ["serde-traits"] }
 spl-transfer-hook-interface = { version = "2.0.0", path = "../../interface" }
+
 strum = "0.27"
 strum_macros = "0.27"
 tokio = { version = "1", features = ["full"] }
-serde = { version = "1.0.219", features = ["derive"] }
+serde = { version = "^1.0", features = ["derive"] }
 serde_json = "1.0.145"
 serde_yaml = "0.9.34"
 
 [dev-dependencies]
-solana-account = "3.0.0"
-solana-keypair = "3.0.0"
-solana-program-option = "3.0.0"
-solana-test-validator = "3.0.0"
-spl-token-2022-interface = "2.0.0"
-spl-token-client = "0.18.0"
+solana-account = { git = "https://github.com/jupnet/jupnet-sdk" }
+solana-keypair = { git = "https://github.com/jupnet/jupnet-sdk" }
+solana-program-option = { git = "https://github.com/jupnet/jupnet-sdk" }
+solana-test-validator = { git = "https://github.com/jupnet/jupnet-svm", branch = "v3.1.2" }
+spl-token-2022-interface = { git = "https://github.com/jupnet/token-2022", branch = "jupnet" }
+spl-token-client = { git = "https://github.com/jupnet/token", branch = "jupnet" }
 spl-transfer-hook-example = { version = "0.6.0", path = "../../program" }
 
 [lints]
@@ -49,3 +52,6 @@ workspace = true
 [[bin]]
 name = "spl-transfer-hook"
 path = "src/main.rs"
+
+[patch.crates-io]
+jupnet-signature = { git = "https://github.com/jupnet/jupnet-sdk" }

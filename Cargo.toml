@@ -1,7 +1,7 @@
 [workspace]
 resolver = "2"
 members = [
-  "clients/cli",
+  # "clients/cli",
   "interface",
   "program",
 ]
@@ -28,5 +28,8 @@ pre-release-commit-message = "Publish {{crate_name}} v{{version}}"
 tag-message = "Publish {{crate_name}} v{{version}}"
 consolidate-commits = false
 
+
+
 [patch.crates-io]
-spl-pod = { path = "../libraries/pod" }
+jupnet-signature = { git = "https://github.com/jupnet/jupnet-sdk" }
+jupnet-signer = { git = "https://github.com/jupnet/jupnet-sdk" }

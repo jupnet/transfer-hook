@@ -16,22 +16,22 @@ forbid-additional-mints = []
 
 [dependencies]
 arrayref = "0.3.9"
-solana-account-info = "3.0.0"
-solana-cpi = "3.0.0"
-solana-msg = "3.0.0"
-solana-program-entrypoint = "3.0.0"
-solana-program-error = "3.0.0"
-solana-pubkey = "3.0.0"
-solana-system-interface = { version = "2", features = ["bincode"] }
-spl-tlv-account-resolution = "0.11.0"
-spl-token-2022-interface = "2.0.0"
+solana-account-info = { git = "https://github.com/jupnet/jupnet-sdk" }
+solana-cpi = { git = "https://github.com/jupnet/jupnet-sdk" }
+solana-msg = { git = "https://github.com/jupnet/jupnet-sdk" }
+solana-program-entrypoint = { git = "https://github.com/jupnet/jupnet-sdk" }
+solana-program-error = { git = "https://github.com/jupnet/jupnet-sdk" }
+solana-pubkey = { git = "https://github.com/jupnet/jupnet-sdk" }
+solana-system-interface = { git = "https://github.com/jupnet/jupnet-sdk", features = ["bincode"] }
+spl-tlv-account-resolution = { git = "https://github.com/jupnet/libraries", branch = "jupnet" }
+spl-token-2022-interface = { git = "https://github.com/jupnet/token-2022", branch = "jupnet" }
 spl-transfer-hook-interface = { version = "2.0.0", path = "../interface" }
-spl-type-length-value = "0.9.0"
+spl-type-length-value = { git = "https://github.com/jupnet/libraries", branch = "jupnet" }
 ethnum = "1.5.1"
 
 [dev-dependencies]
-solana-program-test = "3.0.0"
-solana-sdk = "3.0.0"
+solana-program-test = { git = "https://github.com/jupnet/jupnet-svm", branch = "v3.1.2" }
+solana-sdk = { git = "https://github.com/jupnet/jupnet-sdk" }
 
 [lib]
 crate-type = ["cdylib", "lib"]
