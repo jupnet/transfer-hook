@@ -16,22 +16,22 @@ forbid-additional-mints = []
 
 [dependencies]
 arrayref = "0.3.9"
-solana-account-info = { git = "https://github.com/jupnet/jupnet-sdk" }
-solana-cpi = { git = "https://github.com/jupnet/jupnet-sdk" }
-solana-msg = { git = "https://github.com/jupnet/jupnet-sdk" }
-solana-program-entrypoint = { git = "https://github.com/jupnet/jupnet-sdk" }
-solana-program-error = { git = "https://github.com/jupnet/jupnet-sdk" }
-solana-pubkey = { git = "https://github.com/jupnet/jupnet-sdk" }
-solana-system-interface = { git = "https://github.com/jupnet/jupnet-sdk", features = ["bincode"] }
-spl-tlv-account-resolution = { git = "https://github.com/jupnet/libraries", branch = "jupnet" }
-spl-token-2022-interface = { git = "https://github.com/jupnet/token-2022", branch = "jupnet" }
+solana-account-info = { git = "https://github.com/jupnet/jupnet-sdk", branch = "fix/sdk-deps" }
+solana-cpi = { git = "https://github.com/jupnet/jupnet-sdk", branch = "fix/sdk-deps" }
+solana-msg = { git = "https://github.com/jupnet/jupnet-sdk", branch = "fix/sdk-deps" }
+solana-program-entrypoint = { git = "https://github.com/jupnet/jupnet-sdk", branch = "fix/sdk-deps" }
+solana-program-error = { git = "https://github.com/jupnet/jupnet-sdk", branch = "fix/sdk-deps" }
+solana-pubkey = { git = "https://github.com/jupnet/jupnet-sdk", branch = "fix/sdk-deps" }
+solana-system-interface = { git = "https://github.com/jupnet/jupnet-sdk", branch = "fix/sdk-deps", features = ["bincode"] }
+spl-tlv-account-resolution = { git = "https://github.com/jupnet/libraries", branch = "fix/sdk-deps" }
+spl-token-2022-interface = { git = "https://github.com/jupnet/token-2022", branch = "fix/sdk-deps" }
 spl-transfer-hook-interface = { version = "2.0.0", path = "../interface" }
-spl-type-length-value = { git = "https://github.com/jupnet/libraries", branch = "jupnet" }
+spl-type-length-value = { git = "https://github.com/jupnet/libraries", branch = "fix/sdk-deps" }
 ethnum = "1.5.1"
 
 [dev-dependencies]
 solana-program-test = { git = "https://github.com/jupnet/jupnet-svm", branch = "v3.1.2" }
-solana-sdk = { git = "https://github.com/jupnet/jupnet-sdk" }
+solana-sdk = { git = "https://github.com/jupnet/jupnet-sdk", branch = "fix/sdk-deps" }
 
 [lib]
 crate-type = ["cdylib", "lib"]
