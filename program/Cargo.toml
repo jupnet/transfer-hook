@@ -30,7 +30,7 @@ spl-type-length-value = { git = "https://github.com/jupnet/libraries", branch = 
 ethnum = "1.5.1"
 
 [dev-dependencies]
-solana-program-test = { git = "https://github.com/jupnet/jupnet-svm", branch = "v3.1.2" }
+solana-program-test = { git = "https://github.com/jupnet/jupnet-svm", branch = "fix/sdk-deps-test" }
 solana-sdk = { git = "https://github.com/jupnet/jupnet-sdk", branch = "fix/sdk-deps-test" }
 
 [lib]
